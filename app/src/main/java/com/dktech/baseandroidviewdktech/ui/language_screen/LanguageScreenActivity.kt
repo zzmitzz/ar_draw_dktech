@@ -1,5 +1,6 @@
 package com.dktech.baseandroidviewdktech.ui.language_screen
 
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -9,6 +10,7 @@ import com.dktech.baseandroidviewdktech.base.BaseActivity
 import com.dktech.baseandroidviewdktech.base.ui_models.LanguageModel
 import com.dktech.baseandroidviewdktech.base.ui_models.getLanguageList
 import com.dktech.baseandroidviewdktech.databinding.LayoutActivityLanguageBinding
+import com.dktech.baseandroidviewdktech.ui.home.MainActivity
 import com.dktech.baseandroidviewdktech.utils.helper.getSelectedLanguage
 import com.dktech.baseandroidviewdktech.utils.helper.setSafeOnClickListener
 import com.dktech.baseandroidviewdktech.utils.helper.setSelectedLanguage
@@ -80,10 +82,15 @@ class LanguageScreenActivity :
 
     private fun setLanguage(language: LanguageModel) {
         setSelectedLanguage(this@LanguageScreenActivity, language)
+        nextIntroActivity()
+
     }
 
     private fun nextIntroActivity() {
-
+        Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(this)
+        }
     }
 
 

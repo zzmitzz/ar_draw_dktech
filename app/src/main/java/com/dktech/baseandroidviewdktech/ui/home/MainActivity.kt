@@ -11,12 +11,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.ViewBinding
 import com.dktech.baseandroidviewdktech.MainViewModel
 import com.dktech.baseandroidviewdktech.R
 import com.dktech.baseandroidviewdktech.base.BaseActivityVM
 import com.dktech.baseandroidviewdktech.base.ViewModelFactory
 import com.dktech.baseandroidviewdktech.databinding.ActivityMainBinding
+import com.dktech.baseandroidviewdktech.databinding.NavItemArtworkBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemHomeBinding
+import com.dktech.baseandroidviewdktech.databinding.NavItemLessonBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemTemplateBinding
 
 
@@ -32,6 +35,21 @@ enum class TabFragment(
 
 
 class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
+
+
+    private val homeBinding by lazy {
+        NavItemHomeBinding.bind(binding.navHome.root)
+    }
+    private val templateBinding by lazy {
+        NavItemTemplateBinding.bind(binding.navTemplate.root)
+    }
+    private val lessonBinding by lazy {
+        NavItemLessonBinding.bind(binding.navLesson.root)
+    }
+    private val artworkBinding by lazy {
+        NavItemArtworkBinding.bind(binding.navArtwork.root)
+    }
+
     override val onBackPressedCallback: OnBackPressedCallback
         get() = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -58,6 +76,7 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
 
     override fun initView() {
         setupBottomBar()
+        homeBinding.root.performClick()
     }
 
     override fun initEvent() {
@@ -67,39 +86,56 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
     override fun initObserver() {
 
     }
-    fun setupBottomBar() {
-        val homeBinding = NavItemHomeBinding.bind(binding.navHome.root)
-        val templateBinding = NavItemTemplateBinding.bind(binding.navTemplate.root)
-        val lessonBinding = NavItemHomeBinding.bind(binding.navLesson.root)
-        val artworkBinding = NavItemHomeBinding.bind(binding.navArtwork.root)
-        val tabs = listOf(
-            homeBinding to TabFragment.HOME,
-            templateBinding to TabFragment.TEMPLATE,
-            lessonBinding to TabFragment.LESSON,
-            artworkBinding to TabFragment.ARTWORK
-        )
+    private fun setupBottomBar() {
+        homeBinding.apply {
+            onItemBottomBarClick(this)
+        }
+        templateBinding.apply {
+            onItemBottomBarClick(this)
+        }
+        lessonBinding.apply {
+            onItemBottomBarClick(this)
+        }
+        artworkBinding.apply {
+            onItemBottomBarClick(this)
+        }
+    }
 
-        tabs.forEach { (id, _) ->
-            val tabView = findViewById<LinearLayout>(id.root.id)
-            val icon = tabView.findViewById<ImageView>(R.id.navIcon)
-            val label = tabView.findViewById<TextView>(R.id.navLabel)
-
-            tabView.setOnClickListener {
-                // Reset all tabs
-                tabs.forEach { (resetId, _) ->
-                    val view = findViewById<LinearLayout>(resetId)
-                    val viewLabel = view.findViewById<TextView>(R.id.navLabel)
-                    viewLabel.visibility = View.GONE
-                    view.background = null
-                }
-
-                // Set selected tab
-                label.visibility = View.VISIBLE
-                tabView.background = ContextCompat.getDrawable(this, R.drawable.bg_selected_item)
+    private fun onItemBottomBarClick(itemBinding: ViewBinding) {
+        homeBinding.apply {
+            this.navLabel.visibility = View.GONE
+            this.root.background = null
+        }
+        templateBinding.apply {
+            this.navLabel.visibility = View.GONE
+            this.root.background = null
+        }
+        lessonBinding.apply {
+            this.navLabel.visibility = View.GONE
+            this.root.background = null
+        }
+        artworkBinding.apply {
+            this.navLabel.visibility = View.GONE
+            this.root.background = null
+        }
+        when (itemBinding) {
+            is NavItemHomeBinding -> {
+                itemBinding.navLabel.visibility = View.VISIBLE
+                itemBinding.root.background = ContextCompat.getDrawable(this, R.drawable.bg_selected_item)
+            }
+            is NavItemTemplateBinding -> {
+                itemBinding.navLabel.visibility = View.VISIBLE
+                itemBinding.root.background = ContextCompat.getDrawable(this, R.drawable.bg_selected_item)
+            }
+            is NavItemLessonBinding -> {
+                itemBinding.navLabel.visibility = View.VISIBLE
+                itemBinding.root.background = ContextCompat.getDrawable(this, R.drawable.bg_selected_item)
+            }
+            is NavItemArtworkBinding -> {
+                itemBinding.navLabel.visibility = View.VISIBLE
+                itemBinding.root.background = ContextCompat.getDrawable(this, R.drawable.bg_selected_item)
             }
         }
-
-        homeBinding.root.visibility = View.VISIBLE
-        findViewById<LinearLayout>(R.id.navHome).background = ContextCompat.getDrawable(this, R.drawable.bg_selected_item)
     }
+
 }
