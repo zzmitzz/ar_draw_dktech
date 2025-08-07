@@ -15,20 +15,23 @@
     </androidx.fragment.app.FragmentContainerView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/dp32"
         app:cardElevation="2dp"
+        android:layout_marginHorizontal="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="6dp"
             android:paddingHorizontal="@dimen/dp4"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:background="@color/black">
 
             <include

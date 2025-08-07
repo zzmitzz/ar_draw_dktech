@@ -87,17 +87,20 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
 
     }
     private fun setupBottomBar() {
-        homeBinding.apply {
-            onItemBottomBarClick(this)
+        homeBinding.root.setOnClickListener {
+            onItemBottomBarClick(homeBinding)
         }
-        templateBinding.apply {
-            onItemBottomBarClick(this)
+        templateBinding.root.setOnClickListener {
+
+            onItemBottomBarClick(templateBinding)
         }
-        lessonBinding.apply {
-            onItemBottomBarClick(this)
+        lessonBinding.root.setOnClickListener {
+
+            onItemBottomBarClick(lessonBinding)
         }
-        artworkBinding.apply {
-            onItemBottomBarClick(this)
+        artworkBinding.root.setOnClickListener {
+
+            onItemBottomBarClick(artworkBinding)
         }
     }
 

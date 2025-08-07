@@ -27,6 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:textColor="@color/onSecondaryContainer"
         android:textSize="16sp"
         android:visibility="gone"
