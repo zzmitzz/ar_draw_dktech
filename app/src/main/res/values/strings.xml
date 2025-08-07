@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">xDktech</string>
+    <string name="app_name" translatable="false">AR Drawing</string>
     <string name="this_action_contains_ads">This action contains ads</string>
     <string name="hindi">Hindi</string>
     <string name="english">English</string>
@@ -7,7 +7,11 @@
     <string name="french">French</string>
     <string name="arabic">Arabic</string>
     <string name="bengali">Bengali</string>
-    <string name="languages">Select Language\n</string>
+    <string name="languages">Select \nLanguage</string>
     <string name="apply">Apply</string>
     <string name="please_select_language_first">Please select language first</string>
+    <string name="home">Home</string>
+    <string name="lesson">Lesson</string>
+    <string name="template">Template</string>
+    <string name="artwork">Artwork</string>
 </resources>

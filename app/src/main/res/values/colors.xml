@@ -1,32 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary colors -->
-    <color name="primary">#FFFAF0</color>
-    <color name="onPrimary">#2F2F2F</color>
-    <color name="primaryContainer">#9A74E7</color>
-    <color name="onPrimaryContainer">#FFFFFF</color>
+    <color name="primary">#F8F0FF</color>
+    <color name="onPrimary">#1E1B13</color>
+    <color name="primaryContainer">#FFE172</color>
+    <color name="onPrimaryContainer">@color/black</color>
 
-    <!-- Secondary colors -->
-    <color name="secondary">#BBACFF</color>
-    <color name="onSecondary">#FF000000</color>
-    <color name="secondaryContainer">#34314F</color>
-    <color name="onSecondaryContainer">#9A74E7</color>
+    <color name="secondary">#F5F5F5</color>
+    <color name="onSecondary">#1E1B13</color>
+    <color name="secondaryContainer">#F1DFA6</color>
+    <color name="onSecondaryContainer">#6F6234</color>
 
-    <!-- Tertiary colors -->
-    <color name="tertiary">#FF018786</color>
-    <color name="onTertiary">#FFFFFFFF</color>
-    <color name="tertiaryContainer">#FF8BF6FF</color>
-    <color name="onTertiaryContainer">#FF000000</color>
-
-    <!-- Surface colors -->
-    <color name="surface">#FFFFFFFF</color>
-    <color name="onSurface">#FF000000</color>
-    <color name="surfaceVariant">#FFE0E0E0</color>
-    <color name="onSurfaceVariant">#FF444444</color>
-
-    <!-- Background colors -->
-    <color name="background">#FFFFFFFF</color>
-    <color name="onBackground">#FF000000</color>
 
     <!-- Error colors -->
     <color name="error">#FFB00020</color>

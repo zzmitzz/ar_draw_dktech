@@ -26,24 +26,34 @@ class LanguageAdapter(
 
     inner class ViewHolder(val binding: ItemLanguageBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(language: LanguageModel) {
 
             val isSelected = selectedLanguage == language
-            binding.root.background =
-                AppCompatResources.getDrawable(
-                    context,
-                    if (isSelected) R.drawable.bg_language_selected else R.drawable.bg_language_unselected
-                )
+            if (isSelected) {
+                binding.apply {
+                    ivRadio.setImageResource(R.drawable.ic_rbtn_2_checked)
+                    frFlagCard.backgroundTintList =
+                        AppCompatResources.getColorStateList(context, R.color.primaryContainer)
+                    viewSpace.backgroundTintList =
+                        AppCompatResources.getColorStateList(context, R.color.primaryContainer)
+                    layoutLanguage.backgroundTintList =
+                        AppCompatResources.getColorStateList(context, R.color.primaryContainer)
+                }
+            } else {
+                binding.apply {
+                    ivRadio.setImageResource(R.drawable.ic_rbtn_2)
+                    frFlagCard.backgroundTintList =
+                        AppCompatResources.getColorStateList(context, R.color.secondary)
+                    viewSpace.backgroundTintList =
+                        AppCompatResources.getColorStateList(context, R.color.secondary)
+                    layoutLanguage.backgroundTintList =
+                        AppCompatResources.getColorStateList(context, R.color.secondary)
+                }
+            }
             binding.ivLanguage.setImageResource(language.flagImage)
             binding.languageName.text = context.getString(language.name)
             binding.languageName.setHorizontallyScrolling(true)
-            binding.ivRadio.setImageResource(
-                if (isSelected) {
-                    R.drawable.ic_rbtn_2_checked
-                } else {
-                    R.drawable.ic_rbtn_2
-                }
-            )
             binding.root.setOnClickListener {
                 selectedLanguage = language
                 notifyDataSetChanged()
@@ -58,7 +68,6 @@ class LanguageAdapter(
         )
     }
 
-
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val language = languageList[position]
@@ -69,10 +78,14 @@ class LanguageAdapter(
         return selectedLanguage
     }
 
-    fun setSelectedPositionLanguage(language: LanguageModel) {
-        selectedLanguage = language
-        notifyDataSetChanged()
-    }
+//    fun updateSelectedLanguage(language: LanguageModel) {
+//        if(selectedLanguage == language) return
+//        selectedLanguage?.let {
+//            notifyItemChanged(languageList.indexOf(it))
+//        }
+//        selectedLanguage = language
+//        notifyItemChanged(languageList.indexOf(language))
+//    }
 
     override fun getItemCount(): Int {
         return languageList.size

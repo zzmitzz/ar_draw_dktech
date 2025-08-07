@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "xDktech"
+rootProject.name = "AR DRAWING "
 include(":app")
  

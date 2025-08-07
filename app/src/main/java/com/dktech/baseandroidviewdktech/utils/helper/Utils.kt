@@ -24,7 +24,7 @@ suspend fun getSelectedLanguage(context: Context): LanguageModel {
     } ?: getLanguageList()[0]
 }
 
-suspend fun setSelectedLanguage(context: Context, language: LanguageModel) {
+fun setSelectedLanguage(context: Context, language: LanguageModel) {
     PersistentStorage.Companion.getInstance(context)
         .saveKey(PersistentStorage.Key.APPLICATION_LANGUAGE, Gson().toJsonWithTypeToken(language))
 }

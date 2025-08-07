@@ -26,7 +26,6 @@ class LanguageScreenActivity :
             context = this,
             languageList = getLanguageList(),
             onFirstSelect = {
-                // save selected language
             }
         ).apply {
             scope.launch {
@@ -37,7 +36,7 @@ class LanguageScreenActivity :
     override val onBackPressedCallback: OnBackPressedCallback
         get() = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                nextIntroActivity()
+                finish()
             }
         }
 
@@ -80,14 +79,14 @@ class LanguageScreenActivity :
     }
 
     private fun setLanguage(language: LanguageModel) {
-        scope.launch {
-            setSelectedLanguage(this@LanguageScreenActivity, language)
-        }
+        setSelectedLanguage(this@LanguageScreenActivity, language)
     }
 
     private fun nextIntroActivity() {
 
     }
+
+
 
 
 }
