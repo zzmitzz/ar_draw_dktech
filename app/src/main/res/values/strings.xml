@@ -14,4 +14,14 @@
     <string name="lesson">Lesson</string>
     <string name="template">Template</string>
     <string name="artwork">Artwork</string>
+    <string name="ar_drawing">AR Drawing</string>
+    <string name="trace_ndrawing">Trace\nDrawing</string>
+    <string name="sketch_drawing">Sketch Drawing</string>
+    <string name="trending">🔥Trending</string>
+    <string name="cartoon">🐣Cartoon</string>
+    <string name="all_template">All template</string>
+    <string name="animal">🐷Animal</string>
+    <string name="cute">😍Cute</string>
+    <string name="lesson_step_by_step">Lesson step by step</string>
+    <string name="see_all">See all</string>
 </resources>

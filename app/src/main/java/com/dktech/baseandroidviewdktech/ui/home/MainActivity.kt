@@ -168,6 +168,9 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
 
     }
 
+    private fun inflateFragment(){
+
+    }
     private fun animateItem(
         view: View,
         expand: Boolean,
@@ -200,5 +203,6 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
         widthAnimator.start()
         alphaAnimator.start()
     }
+
 
 }
