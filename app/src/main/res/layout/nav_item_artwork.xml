@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/navIcon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/artwork"
         app:tint="@color/onSecondaryContainer" />
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="@string/artwork"
         android:textColor="@color/onSecondaryContainer"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:maxLines="1"
         android:ellipsize="end"
         android:visibility="gone"

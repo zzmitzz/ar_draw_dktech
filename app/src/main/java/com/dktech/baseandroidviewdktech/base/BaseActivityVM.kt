@@ -21,6 +21,7 @@ abstract class BaseActivityVM<VM : BaseViewModel, VB : ViewBinding> : BaseActivi
         super.onCreate(savedInstanceState)
         initViewModel()
         initLoadingDialog()
+        initObserver()
     }
 
     abstract fun initViewModel()

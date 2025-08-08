@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/navIcon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/home"
         app:tint="@color/onSecondaryContainer" />
 
@@ -30,7 +30,7 @@
         android:maxLines="1"
         android:ellipsize="end"
         android:textColor="@color/onSecondaryContainer"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:visibility="gone"
         android:layout_marginStart="8dp"/>
 </LinearLayout>

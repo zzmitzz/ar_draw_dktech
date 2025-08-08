@@ -16,8 +16,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
-import com.dktech.baseandroidviewdktech.MainViewModel
 import com.dktech.baseandroidviewdktech.R
 import com.dktech.baseandroidviewdktech.base.BaseActivityVM
 import com.dktech.baseandroidviewdktech.base.ViewModelFactory
@@ -26,6 +26,8 @@ import com.dktech.baseandroidviewdktech.databinding.NavItemArtworkBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemHomeBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemLessonBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemTemplateBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 
 enum class TabFragment(
@@ -75,6 +77,8 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
 
     override fun initViewModel() {
         viewModel = ViewModelProvider(this, ViewModelFactory())[MainViewModel::class.java]
+        setupBottomBar()
+        viewModel.setCurrentFragment(TabFragment.HOME)
     }
 
     override fun getViewBinding(): ActivityMainBinding {
@@ -86,9 +90,6 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
     }
 
     override fun initView() {
-        setupBottomBar()
-        homeBinding.root.performClick()
-
     }
 
     override fun initEvent() {
@@ -96,40 +97,52 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
     }
 
     override fun initObserver() {
-
+        viewModel.currentFragment.onEach {
+            when(it){
+                TabFragment.HOME -> onItemBottomBarClick(homeBinding)
+                TabFragment.TEMPLATE -> onItemBottomBarClick(templateBinding)
+                TabFragment.LESSON -> onItemBottomBarClick(lessonBinding)
+                TabFragment.ARTWORK -> onItemBottomBarClick(artworkBinding)
+            }
+        }.launchIn(lifecycleScope)
     }
     private fun setupBottomBar() {
         homeBinding.root.setOnClickListener {
-            onItemBottomBarClick(homeBinding)
+            if(viewModel.currentFragment.value == TabFragment.HOME) return@setOnClickListener
+            viewModel.setCurrentFragment(TabFragment.HOME)
         }
         templateBinding.root.setOnClickListener {
-
-            onItemBottomBarClick(templateBinding)
+            if(viewModel.currentFragment.value == TabFragment.TEMPLATE) return@setOnClickListener
+            viewModel.setCurrentFragment(TabFragment.TEMPLATE)
         }
         lessonBinding.root.setOnClickListener {
-
-            onItemBottomBarClick(lessonBinding)
+            if(viewModel.currentFragment.value == TabFragment.LESSON) return@setOnClickListener
+            viewModel.setCurrentFragment(TabFragment.LESSON)
         }
         artworkBinding.root.setOnClickListener {
-
-            onItemBottomBarClick(artworkBinding)
+            if(viewModel.currentFragment.value == TabFragment.ARTWORK) return@setOnClickListener
+            viewModel.setCurrentFragment(TabFragment.ARTWORK)
         }
     }
 
     private fun onItemBottomBarClick(itemBinding: ViewBinding) {
         homeBinding.apply {
+            navLabel.visibility = View.GONE
             animateItem(root, false, expandedWidth, collapsedWidth, navLabel)
             root.background = null
         }
         templateBinding.apply {
+            navLabel.visibility = View.GONE
             animateItem(root, false, expandedWidth, collapsedWidth, navLabel)
             root.background = null
         }
         lessonBinding.apply {
+            navLabel.visibility = View.GONE
             animateItem(root, false, expandedWidth, collapsedWidth, navLabel)
             root.background = null
         }
         artworkBinding.apply {
+            navLabel.visibility = View.GONE
             animateItem(root, false, expandedWidth, collapsedWidth, navLabel)
             root.background = null
         }
@@ -177,7 +190,7 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
             }
 
             override fun onAnimationEnd(animation: Animator) {
-                if (!expand) label.visibility = View.GONE
+//                if (!expand) label.visibility = View.GONE
             }
         })
 
