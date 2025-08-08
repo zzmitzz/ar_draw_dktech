@@ -14,10 +14,12 @@ import com.dktech.baseandroidviewdktech.ui.home.MainActivity
 import com.dktech.baseandroidviewdktech.utils.helper.getSelectedLanguage
 import com.dktech.baseandroidviewdktech.utils.helper.setSafeOnClickListener
 import com.dktech.baseandroidviewdktech.utils.helper.setSelectedLanguage
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 
+@AndroidEntryPoint
 class LanguageScreenActivity :
     BaseActivity<LayoutActivityLanguageBinding>() {
     private val scope = lifecycleScope + CoroutineExceptionHandler { e, t ->
@@ -68,9 +70,8 @@ class LanguageScreenActivity :
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                scope.launch {
-                    setLanguage(selectedLanguage)
-                }
+                setLanguage(selectedLanguage)
+                nextIntroActivity()
             }
         }
     }
@@ -82,8 +83,6 @@ class LanguageScreenActivity :
 
     private fun setLanguage(language: LanguageModel) {
         setSelectedLanguage(this@LanguageScreenActivity, language)
-        nextIntroActivity()
-
     }
 
     private fun nextIntroActivity() {

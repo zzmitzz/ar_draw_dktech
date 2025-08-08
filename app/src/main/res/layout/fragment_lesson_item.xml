@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_radius_20"
+    android:backgroundTint="@color/white"
+    android:padding="8dp"
+    android:layout_marginBottom="12dp"
+    android:gravity="center_vertical">
+
+    <!-- Cat Image -->
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="4dp"
+        android:src="@drawable/phone_background_white"/>
+
+    <!-- Text Content Container -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="start">
+
+        <!-- Step Counter -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/step"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:id="@+id/tv_step"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8"
+                android:textSize="18sp"
+                android:textColor="#FF6B47"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level:"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="sans-serif" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cnt_rating"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            android:background="@drawable/bg_radius_10"
+            android:backgroundTint="#FDF6EA"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <!-- Add rating -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Arrow Icon -->
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_arrow_forward"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="Forward arrow"
+        />
+
+</LinearLayout>

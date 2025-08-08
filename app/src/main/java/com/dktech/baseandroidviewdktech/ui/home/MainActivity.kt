@@ -17,32 +17,37 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.viewbinding.ViewBinding
 import com.dktech.baseandroidviewdktech.R
 import com.dktech.baseandroidviewdktech.base.BaseActivityVM
-import com.dktech.baseandroidviewdktech.base.ViewModelFactory
 import com.dktech.baseandroidviewdktech.databinding.ActivityMainBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemArtworkBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemHomeBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemLessonBinding
 import com.dktech.baseandroidviewdktech.databinding.NavItemTemplateBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 
 enum class TabFragment(
     val id: Int,
-    val title: String
+    val title: String,
+    val navId: Int
 ){
-    HOME(0, "Home"),
-    TEMPLATE(1, "Template"),
-    LESSON(2, "Lesson"),
-    ARTWORK(3, "ARTWORK")
+    HOME(0, "Home", R.id.homeFragment),
+    TEMPLATE(1, "Template", R.id.templateFragment),
+    LESSON(2, "Lesson", R.id.lessonFragment),
+    ARTWORK(3, "ARTWORK", R.id.artworkFragment)
 }
 
 
+@AndroidEntryPoint
 class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
 
+    private lateinit var navController: NavController
 
     private val expandedWidth by lazy {
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 120f, resources.displayMetrics).toInt()
@@ -76,7 +81,8 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
     }
 
     override fun initViewModel() {
-        viewModel = ViewModelProvider(this, ViewModelFactory())[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        setupNavigation()
         setupBottomBar()
         viewModel.setCurrentFragment(TabFragment.HOME)
     }
@@ -106,22 +112,33 @@ class MainActivity : BaseActivityVM<MainViewModel, ActivityMainBinding>() {
             }
         }.launchIn(lifecycleScope)
     }
+
+    private fun setupNavigation() {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+    }
+
     private fun setupBottomBar() {
         homeBinding.root.setOnClickListener {
             if(viewModel.currentFragment.value == TabFragment.HOME) return@setOnClickListener
             viewModel.setCurrentFragment(TabFragment.HOME)
+            navController.navigate(TabFragment.HOME.navId)
         }
         templateBinding.root.setOnClickListener {
             if(viewModel.currentFragment.value == TabFragment.TEMPLATE) return@setOnClickListener
             viewModel.setCurrentFragment(TabFragment.TEMPLATE)
+            navController.navigate(TabFragment.TEMPLATE.navId)
         }
         lessonBinding.root.setOnClickListener {
             if(viewModel.currentFragment.value == TabFragment.LESSON) return@setOnClickListener
             viewModel.setCurrentFragment(TabFragment.LESSON)
+            navController.navigate(TabFragment.LESSON.navId)
         }
         artworkBinding.root.setOnClickListener {
             if(viewModel.currentFragment.value == TabFragment.ARTWORK) return@setOnClickListener
             viewModel.setCurrentFragment(TabFragment.ARTWORK)
+            navController.navigate(TabFragment.ARTWORK.navId)
         }
     }
 

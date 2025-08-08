@@ -6,8 +6,11 @@ import androidx.activity.OnBackPressedCallback
 import com.dktech.baseandroidviewdktech.base.BaseActivity
 import com.dktech.baseandroidviewdktech.base.BaseViewModel
 import com.dktech.baseandroidviewdktech.databinding.LayoutActivitySplashscreenBinding
+import com.dktech.baseandroidviewdktech.ui.home.MainActivity
 import com.dktech.baseandroidviewdktech.ui.language_screen.LanguageScreenActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashScreenActivity : BaseActivity<LayoutActivitySplashscreenBinding>() {
     override val onBackPressedCallback: OnBackPressedCallback
         get() = object : OnBackPressedCallback(true) {
@@ -25,7 +28,7 @@ class SplashScreenActivity : BaseActivity<LayoutActivitySplashscreenBinding>() {
 
     override fun initView() {
         Handler().postDelayed(Runnable {
-            startActivity(Intent(this, LanguageScreenActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }, 2000)
     }

@@ -6,7 +6,6 @@
     android:id="@+id/navHome"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="8dp"
     android:orientation="horizontal"
     android:gravity="center"
     android:paddingHorizontal="16dp"

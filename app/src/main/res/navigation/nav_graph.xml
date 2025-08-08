@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.dktech.baseandroidviewdktech.ui.home.screen.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/templateFragment"
+        android:name="com.dktech.baseandroidviewdktech.ui.home.screen.TemplateFragment"
+        android:label="Template" />
+
+    <fragment
+        android:id="@+id/lessonFragment"
+        android:name="com.dktech.baseandroidviewdktech.ui.home.screen.LessonFragment"
+        android:label="Lesson" />
+
+    <fragment
+        android:id="@+id/artworkFragment"
+        android:name="com.dktech.baseandroidviewdktech.ui.home.screen.ArtworkFragment"
+        android:label="Artwork" />
+
+    <action
+        android:id="@+id/action_home_to_template"
+        app:destination="@id/templateFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_home_to_lesson"
+        app:destination="@id/lessonFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_home_to_artwork"
+        app:destination="@id/artworkFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_template_to_home"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_left" />
+
+    <action
+        android:id="@+id/action_template_to_lesson"
+        app:destination="@id/lessonFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_template_to_artwork"
+        app:destination="@id/artworkFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_lesson_to_home"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_left" />
+
+    <action
+        android:id="@+id/action_lesson_to_template"
+        app:destination="@id/templateFragment"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_left" />
+
+    <action
+        android:id="@+id/action_lesson_to_artwork"
+        app:destination="@id/artworkFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_artwork_to_home"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_left" />
+
+    <action
+        android:id="@+id/action_artwork_to_template"
+        app:destination="@id/templateFragment"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_left" />
+
+    <action
+        android:id="@+id/action_artwork_to_lesson"
+        app:destination="@id/lessonFragment"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_left" />
+
+</navigation>

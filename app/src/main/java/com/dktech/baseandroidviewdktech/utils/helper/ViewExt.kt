@@ -16,7 +16,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.dktech.baseandroidviewdktech.R
 
-private const val DEBOUNCE_CLICK = 500L
+private const val DEBOUNCE_CLICK = 800L
 
 
 // -----------------------------------------------------------------------------
@@ -33,14 +33,14 @@ fun View.invisible(){
     visibility = View.INVISIBLE
 }
 
+var lastClickTime: Long = 0L
 fun View.setSafeOnClickListener(
     delay: Long = DEBOUNCE_CLICK,
     onClick: (View) -> Unit
 ) {
-    var lastClickTime: Long = 0L
     setOnClickListener {
         val now = System.currentTimeMillis()
-        if (now - lastClickTime < delay) {
+        if (now - lastClickTime > delay) {
             onClick(it)
             lastClickTime = now
         }
