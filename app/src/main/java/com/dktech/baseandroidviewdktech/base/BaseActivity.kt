@@ -65,7 +65,7 @@ abstract class BaseActivity<viewBinding : ViewBinding> : AppCompatActivity() {
         initView()
         initEvent()
         hideNavigationBar()
-
+        initObserver()
     }
 
     abstract fun getViewBinding(): viewBinding

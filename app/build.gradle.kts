@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.kotlinx.serialization)
     kotlin("kapt")
 }
 
@@ -60,7 +61,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gson.v2101)
     implementation(libs.converter.gson)
-    
+    implementation(libs.kotlinx.serialization.json)
     // Hilt dependencies
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)

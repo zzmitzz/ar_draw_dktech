@@ -1,5 +1,6 @@
 package com.dktech.baseandroidviewdktech.data.repository
 
+import com.dktech.baseandroidviewdktech.data.SingleDataSource
 import com.dktech.baseandroidviewdktech.data.datasource.remote.PaintingService
 import com.dktech.baseandroidviewdktech.data.model.PaintingDrawDTO
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -8,14 +9,25 @@ import javax.inject.Inject
 @ViewModelScoped
 class PaintingDrawRepositoryImplement @Inject constructor(
     private val paintingService: PaintingService
-): PaintingDrawRepository {
+) : PaintingDrawRepository {
+
 
     override suspend fun getAllPaintingDraw(): List<PaintingDrawDTO> {
-        return listOf()
+        if (SingleDataSource.dataSource.isEmpty()) {
+            SingleDataSource.dataSource.addAll(
+                paintingService.getItemDrawData().data
+            )
+        }
+        return SingleDataSource.dataSource
     }
 
     override suspend fun getPaintingDrawByCategory(category: String): List<PaintingDrawDTO> {
-        return listOf()
+        if (SingleDataSource.dataSource.isEmpty()) {
+            getAllPaintingDraw()
+        }
+        return SingleDataSource.dataSource.filter {
+            it.category == category
+        }
     }
 
     override suspend fun getPaintingDrawByID(id: String): PaintingDrawDTO {

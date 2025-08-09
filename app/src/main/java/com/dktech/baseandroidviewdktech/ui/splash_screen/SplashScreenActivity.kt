@@ -27,10 +27,8 @@ class SplashScreenActivity : BaseActivity<LayoutActivitySplashscreenBinding>() {
     }
 
     override fun initView() {
-        Handler().postDelayed(Runnable {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }, 2000)
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun initEvent() {
