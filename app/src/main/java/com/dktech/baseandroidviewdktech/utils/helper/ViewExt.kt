@@ -21,15 +21,15 @@ private const val DEBOUNCE_CLICK = 800L
 
 // -----------------------------------------------------------------------------
 // VIEW EXTENSION
-fun View.gone(){
+fun View.gone() {
     visibility = View.GONE
 }
 
-fun View.visible(){
+fun View.visible() {
     visibility = View.VISIBLE
 }
 
-fun View.invisible(){
+fun View.invisible() {
     visibility = View.INVISIBLE
 }
 
@@ -79,15 +79,6 @@ fun ImageView.loadRemoteImage(
     Glide
         .with(context)
         .load(url)
-        .apply {
-            RequestOptions().placeholder(R.drawable.img_thumbnail).priority(Priority.HIGH)
-        }
-        .thumbnail(
-            Glide.with(context)
-                .load(url)
-                .sizeMultiplier(0.2f)
-                .override(width, height)
-        )
         .transition(DrawableTransitionOptions.withCrossFade())
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .error(R.drawable.img_thumbnail)
@@ -100,7 +91,7 @@ fun ImageView.loadRemoteImage(
     url: String,
     header: Map<String, String> = emptyMap()
 ) {
-    val glideUrl = GlideUrl(url) {header}
+    val glideUrl = GlideUrl(url) { header }
     Glide
         .with(context)
         .load(glideUrl)
@@ -160,4 +151,11 @@ fun Context.showKeyboard(view: View) {
             InputMethodManager.SHOW_IMPLICIT
         )
     }
+}
+
+fun Context.dpFromPx(px: Float): Float {
+    return px / this.resources.displayMetrics.density
+}
+fun Context.pxFromDp(dp: Float): Float {
+    return dp * this.resources.displayMetrics.density
 }

@@ -26,7 +26,7 @@ class PaintingDrawRepositoryImplement @Inject constructor(
             getAllPaintingDraw()
         }
         return SingleDataSource.dataSource.filter {
-            it.category == category
+            it.category.equals(category, true)
         }
     }
 

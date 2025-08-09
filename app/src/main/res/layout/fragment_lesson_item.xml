@@ -2,81 +2,88 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="140dp"
-    android:orientation="horizontal"
+    android:layout_marginBottom="12dp"
     android:background="@drawable/bg_radius_20"
     android:backgroundTint="@color/white"
-    android:padding="8dp"
-    android:layout_marginBottom="12dp"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="8dp">
 
-    <!-- Cat Image -->
     <ImageView
+        android:id="@+id/image"
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="4dp"
-        android:src="@drawable/phone_background_white"/>
+        android:src="@drawable/phone_background_white" />
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="150dp"
+        android:background="#F1DFA6" />
     <!-- Text Content Container -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="start">
+        android:gravity="start"
+        android:orientation="vertical">
 
         <!-- Step Counter -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
             android:gravity="center_vertical"
-            android:layout_marginBottom="12dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
                 android:text="@string/step"
-                android:textSize="16sp"
                 android:textColor="#666666"
-                android:fontFamily="sans-serif" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_step"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8"
-                android:textSize="18sp"
-                android:textColor="#FF6B47"
-                android:textStyle="bold"
                 android:layout_marginStart="8dp"
-                android:fontFamily="sans-serif" />
+                android:fontFamily="sans-serif"
+                android:text="8"
+                android:textColor="#FF6B47"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Level:"
-                android:textSize="16sp"
-                android:textColor="#666666"
                 android:layout_marginEnd="12dp"
-                android:fontFamily="sans-serif" />
+                android:fontFamily="sans-serif"
+                android:text="Level:"
+                android:textColor="#666666"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/cnt_rating"
             android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/dp16"
-            android:background="@drawable/bg_radius_10"
-            android:backgroundTint="#FDF6EA"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_marginTop="@dimen/dp8"
+            android:background="@drawable/bg_radius_20"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="@dimen/dp4"
+            android:backgroundTint="#FDF6EA"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
             <!-- Add rating -->
         </LinearLayout>
 
@@ -84,12 +91,11 @@
 
     <!-- Arrow Icon -->
     <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_arrow_forward"
+        android:layout_width="12dp"
+        android:layout_height="16dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="24dp"
         android:contentDescription="Forward arrow"
-        />
+        android:src="@drawable/ic_arrow_forward" />
 
 </LinearLayout>

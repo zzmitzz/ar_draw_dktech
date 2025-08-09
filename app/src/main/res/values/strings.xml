@@ -39,4 +39,17 @@
     <string name="secure_your_phone_using_a_tripod_a_glass_or_even_a_stack_of_books_to_keep_it_steady_while_you_draw">Secure your phone using a tripod, a glass, or even a stack of books to keep it steady while you draw.</string>
     <string name="i_got_it">I got it</string>
     <string name="place_a_sheet">Place a sheet of paper over the screen and simply trace the lines displayed to recreate the image effortlessly.</string>
+    <string name="pick_a_template">Pick a Template</string>
+    <string name="anime">🎏Anime</string>
+    <string name="chibi">🍡Chibi</string>
+    <string name="sport">️⛹️‍♂️Sport</string>
+    <string name="level_1">Lesson 1</string>
+    <string name="level_2">Lesson 2</string>
+    <string name="level_3">Lesson 3</string>
+    <string name="select_the_nmode_drawing">Select the\nmode drawing</string>
+    <string name="continue_btn">Continue</string>
+    <string name="sketch_drawing_n">Sketch Drawing</string>
+    <string name="trace_drawing_n">Trace Drawing</string>
+    <string name="finish">Finish</string>
+    <string name="opacity">Opacity</string>
 </resources>
